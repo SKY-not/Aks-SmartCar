@@ -1,6 +1,6 @@
 # Aks-SmartCar
 
-<<<<<<< main
+
 ## Introduction
 This a project uses STM-32 to build a smart car. The project aims to build a smart car to conquer following tasks:
   - Follow a line
@@ -12,8 +12,8 @@ This a project uses STM-32 to build a smart car. The project aims to build a sma
   - We are a group of students from HCMUT, Vietnam.
   - We are passionate about robotics and embedded systems.
   - We aim to create innovative solutions using technology.
-  
-=======
-- This a project which uses STM-32 to build a smart car.
-- The final car will be accessible to track and avoid obstacles.
->>>>>>> main
+
+
+
+## About Us
+ - This project is developed by the students of Viet Nam National University of Agriculture (VNUA).
