@@ -57,9 +57,11 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define PWM_T1_CH1_Pin GPIO_PIN_8
+#define PWM_T1_CH1_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
-
+# define u16 uint16_t
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

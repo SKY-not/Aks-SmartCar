@@ -23,7 +23,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+# include "motor.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -89,7 +89,8 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-
+  // 初始化电机控制，周期为1000，使得电机转动速度可以的得到更加精准的控制
+  Motor_Control_Init(7200, 1000); // 初始化电机控制，设置预分频器为7200，周期为1000
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -99,6 +100,26 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    TIM_SetCompare_CH1(50, TIM1); // 设置TIM1通道1的占空比为50%
+    for (int state =0; state < 3 ; state++) {
+      switch (state) {
+        case 0 : // 前进
+          TIM_SetCompare_CH1(80, TIM1); // 设置占空比为80%
+          HAL_GPIO_WritePin(GPIOD, GPIO_PIN_1, GPIO_PIN_SET);
+          HAL_GPIO_WritePin(GPIOD, GPIO_PIN_2, GPIO_PIN_RESET);
+          break;
+        case 1 : // 后退
+          TIM_SetCompare_CH1(30, TIM1); // 设置占空比为30%
+          HAL_GPIO_WritePin(GPIOD, GPIO_PIN_1, GPIO_PIN_RESET);
+          HAL_GPIO_WritePin(GPIOD, GPIO_PIN_2, GPIO_PIN_SET);
+          break;
+        case 2 : // 停止
+          HAL_GPIO_WritePin(GPIOD, GPIO_PIN_1, GPIO_PIN_SET);
+          HAL_GPIO_WritePin(GPIOD, GPIO_PIN_2, GPIO_PIN_SET);
+      }
+      HAL_Delay(1000);
+    }
+
   }
   /* USER CODE END 3 */
 }
