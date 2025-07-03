@@ -19,7 +19,7 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 # Set the project name
-set(CMAKE_PROJECT_NAME Aks_Smartcar)
+set(CMAKE_PROJECT_NAME Aks-SmartCar)
 
 # Include toolchain file
 include("cmake/gcc-arm-none-eabi.cmake")
@@ -35,7 +35,10 @@ message("Build type: " ${CMAKE_BUILD_TYPE})
 enable_language(C ASM)
 
 # Create an executable object type
-add_executable(${CMAKE_PROJECT_NAME})
+add_executable(${CMAKE_PROJECT_NAME}
+        Core/Src/motor.c
+        Core/Inc/motor.h
+)
 
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)
@@ -47,10 +50,6 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-        Core/Inc/motor.h
-        Core/Src/motor.c
-        Core/Inc/servo.h
-        Core/Src/servo.c
     # Add user sources here
 )
 
