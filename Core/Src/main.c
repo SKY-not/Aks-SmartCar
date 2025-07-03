@@ -88,6 +88,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM1_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   // 初始化电机控制，周期为1000，使得电机转动速度可以的得到更加精准的控制
   Motor_Control_Init(7200, 1000); // 初始化电机控制，设置预分频器为7200，周期为1000
